@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { emotionStore, Emotion } from '../../store';
 import styles from './EmotionBoard.module.css';
@@ -9,7 +9,7 @@ import { AddEmotion } from '../add-emotion';
 import { Modal } from '../ui/modal';
 import { EmotionType } from '../../instruments/emotionTypes';
 import { Button } from '../ui/button';
-import { DndContext, closestCenter, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove, SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -97,7 +97,7 @@ const EmotionBoard = observer(() => {
     }
   };
 
-  function handleDragEnd(event: any) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
     if (active && over && active.id !== over.id) {
       const oldIndex = emotionStore.emotions.findIndex(e => e.id === active.id);
