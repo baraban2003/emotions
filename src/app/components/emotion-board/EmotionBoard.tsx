@@ -41,14 +41,14 @@ const EmotionBoard = observer(() => {
   };
 
   // Drag-and-drop для мобільних (touch)
-  const handleTouchStart = (idx: number) => (_e: React.TouchEvent) => {
+  const handleTouchStart = (idx: number) => () => {
     if (!isMobile()) return;
     document.body.style.overflow = 'hidden';
     setDragIndex(idx);
     dragItem.current = emotionStore.emotions[idx];
   };
 
-  const handleTouchMove = (idx: number) => (_e: React.TouchEvent) => {
+  const handleTouchMove = () => (_e: React.TouchEvent) => {
     if (!isMobile() || dragIndex === null) return;
     _e.preventDefault();
     const touch = _e.touches[0];
@@ -60,7 +60,7 @@ const EmotionBoard = observer(() => {
     if (overIdx !== dragOverIndex) setDragOverIndex(overIdx);
   };
 
-  const handleTouchEnd = (idx: number) => (_e: React.TouchEvent) => {
+  const handleTouchEnd = () => () => {
     document.body.style.overflow = '';
     if (!isMobile() || dragIndex === null || dragOverIndex === null) {
       setDragIndex(null);
@@ -109,8 +109,8 @@ const EmotionBoard = observer(() => {
                 }
                 data-idx={idx}
                 onTouchStart={handleTouchStart(idx)}
-                onTouchMove={handleTouchMove(idx)}
-                onTouchEnd={handleTouchEnd(idx)}
+                onTouchMove={handleTouchMove()}
+                onTouchEnd={handleTouchEnd()}
               >
                 <EmotionCard emotion={emotion} onDelete={handleDeleteEmotion} />
               </li>
