@@ -1,4 +1,4 @@
-import { EmotionType } from '../store';
+import { EmotionType } from './emotionTypes';
 
 export const emotionIcons: Record<EmotionType, string> = {
   'Радість': '😊',

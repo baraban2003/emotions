@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Emotion } from '../../store';
 import styles from './EmotionCard.module.css';
 import { emotionIcons, emotionColors } from '../../instruments/emotionInstruments';
-import { Button } from '../ui/button';
 import { CloseIcon } from '../ui/close-icon';
 
 interface EmotionCardProps {

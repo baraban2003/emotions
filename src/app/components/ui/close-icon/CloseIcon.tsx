@@ -27,7 +27,9 @@ const CloseIcon: React.FC<CloseIconProps> = ({
     onKeyDown={e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        onClick?.(e as any);
+        if (onClick) {
+          onClick(undefined as unknown as React.MouseEvent<HTMLSpanElement, MouseEvent>);
+        }
       }
     }}
   >

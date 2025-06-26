@@ -7,6 +7,7 @@ import styles from './EmotionBoard.module.css';
 import { EmotionCard } from '../emotion-card';
 import { AddEmotion } from '../add-emotion';
 import { Modal } from '../ui/modal';
+import { EmotionType } from '../../instruments/emotionTypes';
 import { Button } from '../ui/button';
 
 const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 640;
@@ -24,7 +25,7 @@ const EmotionBoard = observer(() => {
   }, []);
   if (!isHydrated) return null;
 
-  const handleAddEmotion = (type: any, comment: string) => {
+  const handleAddEmotion = (type: EmotionType, comment: string) => {
     emotionStore.addEmotion(type, comment);
     setModalOpen(false);
   };
@@ -40,17 +41,17 @@ const EmotionBoard = observer(() => {
   };
 
   // Drag-and-drop для мобільних (touch)
-  const handleTouchStart = (idx: number) => (e: React.TouchEvent) => {
+  const handleTouchStart = (idx: number) => (_e: React.TouchEvent) => {
     if (!isMobile()) return;
     document.body.style.overflow = 'hidden';
     setDragIndex(idx);
     dragItem.current = emotionStore.emotions[idx];
   };
 
-  const handleTouchMove = (idx: number) => (e: React.TouchEvent) => {
+  const handleTouchMove = (idx: number) => (_e: React.TouchEvent) => {
     if (!isMobile() || dragIndex === null) return;
-    e.preventDefault();
-    const touch = e.touches[0];
+    _e.preventDefault();
+    const touch = _e.touches[0];
     const target = document.elementFromPoint(touch.clientX, touch.clientY);
     if (!target) return;
     const li = target.closest('li');
@@ -59,7 +60,7 @@ const EmotionBoard = observer(() => {
     if (overIdx !== dragOverIndex) setDragOverIndex(overIdx);
   };
 
-  const handleTouchEnd = (idx: number) => (e: React.TouchEvent) => {
+  const handleTouchEnd = (idx: number) => (_e: React.TouchEvent) => {
     document.body.style.overflow = '';
     if (!isMobile() || dragIndex === null || dragOverIndex === null) {
       setDragIndex(null);
