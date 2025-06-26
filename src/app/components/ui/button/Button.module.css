@@ -1,0 +1,34 @@
+.button {
+  min-height: 3rem;
+  background: var(--foreground);
+  color: var(--background);
+  border: 1px solid var(--background);
+  border-radius: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  outline: none;
+  margin: 0.2rem;
+}
+.button:hover:not(:disabled) {
+  background: #840651;
+  color: #fff;
+}
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+@media (max-width: 639px) {
+  .button {
+    min-height: 2rem;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+  .button:hover:not(:disabled) {
+    background: var(--foreground);
+    color: var(--background);
+  }
+}

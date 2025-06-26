@@ -1,0 +1,69 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.cardsRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.btnRow {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+.mainBtn {
+  flex: 1 1 0;
+  min-width: 120px;
+  max-width: 220px;
+}
+
+.textarea {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.mainBtn img {
+  vertical-align: middle;
+  filter: none;
+  transition: filter 0.2s;
+  margin-right: 8px;
+}
+.mainBtn:hover img {
+  filter: invert(32%) sepia(99%) saturate(7490%) hue-rotate(357deg)
+    brightness(99%) contrast(107%);
+}
+
+@media (max-width: 639px) {
+  .btnRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    justify-content: center;
+  }
+  .mainBtn {
+    width: 90vw;
+    max-width: 320px;
+    min-width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

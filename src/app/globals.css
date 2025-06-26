@@ -1,8 +1,54 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #110841;
+  --foreground: #bbb4e1;
 }
 
 @theme inline {
@@ -14,13 +60,27 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #261b66;
+    --foreground: #c9c4e6;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body.theme-light {
+  --background: #dddbec;
+  --foreground: #3b3172;
+  background-image: url('/pictures/light-mode.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body.theme-dark {
+  --background: #bbb4e1;
+  --foreground: #110841;
+
+  background-image: url('/pictures/dark-mode.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }

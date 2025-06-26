@@ -1,0 +1,21 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  transition: filter 0.2s, color 0.2s;
+  user-select: none;
+}
+.line {
+  stroke: #888;
+  transition: stroke 0.2s;
+}
+.icon:hover .line,
+.icon:focus .line {
+  stroke: #840651;
+}
+.icon:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
